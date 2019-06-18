@@ -1,33 +1,26 @@
-<%-- 
-    Document   : index
-    Created on : 10-jun-2019, 21:17:24
-    Author     : Informatica
---%>
-<%@page import="javax.naming.InitialContext"%>
-<%@page import="beans.ServicioLocal"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%! private ServicioLocal servicio; %>
-<%
-    InitialContext ctx=new InitialContext();
-    servicio=
-      (ServicioLocal)
-  ctx.lookup("java:global/Pets_3332/Servicio!beans.ServicioLocal");
-%>
-<c:set var="productos" scope="page" 
-value="<%=servicio.getProductos()%>"/>
+<%@include file="templates/header.jsp" %>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Ejemplo BD</title>
-    </head>
-    <body>
-        <h1>Productos</h1>
-        <c:forEach items="${pageScope.productos}" var="p">
-            ${p.nombreProducto}, ${p.precioProducto}, 
-            ${p.categoria.nombreCategoria}<br/>
-        </c:forEach>
-    </body>
-</html>
+
+<div class="row">
+    <div class="col s4 offset-s4 z-depth-3">
+        <h4 class="center-align">Ingreso</h4>
+        <form action="control.do" method="post">
+            <div class="input-field col s12">
+                <input name="rut" id="rut" type="text" class="validate">
+                <label for="rut">RUT</label>
+            </div>
+            <div class="input-field col s12">
+                <input name="clave" id="clave" type="password" class="validate">
+                <label for="clave">Clave:</label>
+            </div>
+            <button class="btn right" name="boton" value="login">Entrar</button>
+            <br/><br/><br/>
+            <p class="center-align">
+                <a href="registro.jsp">Si no tienes cuenta registrate aqui</a>
+            </p>
+        </form>
+        <br/><br/>
+        <p class="red-text">${requestScope.msg}</p>
+    </div>
+</div>
+<%@include file="templates/footer.jsp" %>
