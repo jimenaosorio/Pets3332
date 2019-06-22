@@ -22,7 +22,7 @@
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Encuentra tu trabajo</title>
+        <title>Tienda de Mascotas</title>
     </head>
-    <body class="orange lighten-3">
+    <body>
         
